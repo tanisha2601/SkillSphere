@@ -1,0 +1,62 @@
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "tanishaclient@gmail.com",
+  "password": "12345678"
+}
+
+### Create Gig
+POST http://localhost:5000/api/gigs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2U3NTViYWFkNzhkZWQ0YzcyNDY4MCIsImlhdCI6MTc4MjQ3ODMyNywiZXhwIjoxNzgzMDgzMTI3fQ.MJyI1-BytjP92qDUlQ-lT4E_3cL-8blo4wSWa6uRS0I
+
+{
+  "title": "Build MERN Website",
+  "description": "Need a full stack MERN developer",
+  "category": "Web Development",
+  "budget": 15000,
+  "skills": ["React", "Node.js", "MongoDB"],
+  "deliveryTime": 10
+}
+
+
+### Get All Gigs
+GET http://localhost:5000/api/gigs
+
+
+# ==========================================
+# Replace YOUR_GIG_ID with an actual gig _id
+# from the Get All Gigs response above.
+# Replace YOUR_TOKEN with a fresh login token.
+# ==========================================
+
+### Get Single Gig (Public - no token needed)
+GET http://localhost:5000/api/gigs/6a3e769baad78ded4c724688
+
+
+### Update Gig (Owner Client Only)
+# ✅ Should return 200 if token belongs to the gig owner
+# ❌ Should return 403 if token belongs to a different client
+PUT http://localhost:5000/api/gigs/6a3e769baad78ded4c724688
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2U3NTViYWFkNzhkZWQ0YzcyNDY4MCIsImlhdCI6MTc4MjQ3ODMyNywiZXhwIjoxNzgzMDgzMTI3fQ.MJyI1-BytjP92qDUlQ-lT4E_3cL-8blo4wSWa6uRS0I
+
+{
+  "title": "Updated MERN Website Project",
+  "description": "Looking for an experienced MERN stack developer",
+  "category": "Web Development",
+  "budget": 20000,
+  "skills": ["React", "Node.js", "MongoDB", "Express"],
+  "deliveryTime": 14,
+  "status": "open"
+}
+
+
+### Delete Gig (Owner Client Only)
+# ✅ Should return 200 + "Gig deleted successfully" if owner
+# ❌ Should return 403 if different client's token
+# ❌ Should return 401 if no token provided
+DELETE http://localhost:5000/api/gigs/6a3e769baad78ded4c724688
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2U3NTViYWFkNzhkZWQ0YzcyNDY4MCIsImlhdCI6MTc4MjQ3ODMyNywiZXhwIjoxNzgzMDgzMTI3fQ.MJyI1-BytjP92qDUlQ-lT4E_3cL-8blo4wSWa6uRS0I
