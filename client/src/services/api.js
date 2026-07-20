@@ -1,7 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_APIBASEURL || 'http://localhost:5000/api',
+  baseURL:
+    import.meta.env.VITE_APIBASEURL ||
+    "https://skillsphere-backend-uew5.onrender.com/api",
   timeout: 10000,
 });
 
