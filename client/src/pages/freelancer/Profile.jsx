@@ -107,9 +107,10 @@ const sanitizeUrl = (url) => {
 
 const serverUrl = (path) => {
   if (!path) return '';
-  // If already absolute leave it alone, otherwise prepend dev server
+  // If already absolute leave it alone, otherwise prepend backend origin
   if (/^https?:\/\//i.test(path)) return path;
-  return `http://localhost:5000${path}`;
+  const base = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  return `${base}${path}`;
 };
 
 const formatRelativeTime = (date) => {

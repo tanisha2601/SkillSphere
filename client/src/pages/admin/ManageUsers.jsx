@@ -168,7 +168,7 @@ export default function ManageUsers() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <img
-                            src={u.avatar ? `http://localhost:5000${u.avatar}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(u.fullName || 'U')}&background=0f172a&color=22d3ee`}
+                            src={u.avatar ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${u.avatar}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(u.fullName || 'U')}&background=0f172a&color=22d3ee`}
                             alt={u.fullName}
                             className="w-9 h-9 rounded-xl object-cover border border-white/10"
                           />
@@ -242,7 +242,7 @@ export default function ManageUsers() {
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex items-center gap-3">
                       <img
-                        src={req.user?.avatar ? `http://localhost:5000${req.user.avatar}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(req.user?.fullName || 'U')}&background=0f172a&color=22d3ee`}
+                        src={req.user?.avatar ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${req.user.avatar}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(req.user?.fullName || 'U')}&background=0f172a&color=22d3ee`}
                         alt={req.user?.fullName}
                         className="w-12 h-12 rounded-2xl object-cover border border-white/10"
                       />
@@ -276,7 +276,7 @@ export default function ManageUsers() {
                     <div className="mt-4 flex flex-wrap gap-2">
                       {req.documents.map((doc, i) => (
                         <a key={i}
-                          href={doc.url?.startsWith('/') ? `http://localhost:5000${doc.url}` : doc.url}
+                          href={doc.url?.startsWith('/') ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${doc.url}` : doc.url}
                           target="_blank" rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-400 hover:text-white hover:border-white/20 transition-colors">
                           <FileText size={11} />

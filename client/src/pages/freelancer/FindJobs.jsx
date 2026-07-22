@@ -79,7 +79,7 @@ function GigCard({ gig }) {
         <Link to={`/gig/${gig._id}`} className="flex items-center gap-3">
           <div className="relative">
             <img
-              src={gig.client?.avatar ? (gig.client.avatar.startsWith('http') ? gig.client.avatar : `http://localhost:5000${gig.client.avatar}`) : `https://ui-avatars.com/api/?name=${encodeURIComponent(gig.client?.fullName || 'Client')}&background=1e293b&color=cbd5e1`}
+              src={gig.client?.avatar ? (gig.client.avatar.startsWith('http') ? gig.client.avatar : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${gig.client.avatar}`) : `https://ui-avatars.com/api/?name=${encodeURIComponent(gig.client?.fullName || 'Client')}&background=1e293b&color=cbd5e1`}
               alt={gig.client?.fullName || "Client"}
               className="h-12 w-12 rounded-2xl object-cover border border-white/10"
               onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(gig.client?.fullName || 'Client')}&background=1e293b&color=cbd5e1`; }}
